@@ -63,13 +63,26 @@
       
       <div class="row">
         <div class="col-lg-12">
-          <h2>Adversarial Attack Article</h2>
-          <ul>
-            <li>Stop sign classification must be 100% foolproof</li>
-            <li>Researchers at the University of Washington developed a method for altering stop signs that caused high percentages of misclassification</li>
-            <li>They first trained a model, then developed an algorithm to create alterations undetectable to the human eye, but significant enough to drastically alter the classification results</li>
-            <li>This is a textbook example of an Adversarial Attack</li>
-          </ul>
+          <h3>Adversarial Attack Article</h3>
+          <p>
+            In the beginnings of planning our project, we knew we wanted to do something related to autonomous vehicles and how they percieve the world. At first, we planned on creating a lane line quality analysis alogirthm. However, we completely shifted our plans when we read <a href="https://arstechnica.com/cars/2017/09/hacking-street-signs-with-stickers-could-confuse-self-driving-cars/">this article from ArsTechnica</a> about adversarial attacks on stop signs. With only a few pieces of tape or a pattern of "noise", the researchers could cause stop signs to be misclassified a high percentage of the time. And of these misclassifications, some of them were seen as 45mph signs.
+          </p>
+          <p>To quote from the article: </p>
+          <blockquote>
+            Ivan Evtimov—a grad student at the University of Washington—and some colleagues first trained a deep neural network to recognize different US road signs. Then, they created an algorithm that generated changes to the signs that human eyes find innocuous, but which changed the meaning when a sign was read by the AI classifier they just trained. Evtimov and his co-authors propose two different ways to hack a street sign, either by printing out an altered copy that you cover the existing sign with or by just making small additions with stickers. 
+          </blockquote>
+          <p>
+            This style of adversarial attack is known as a White Box attack. In such an attack, the attacker has direct privileges and access to the model's settings and parameters; contrast that with a Black Box attack in which the attacker only has limited access to the model and can only access it through the input and output. While a Black Box attack is the more realistic of the two, this White Box attack serves as more a proof of concept. It shows that with a few simple alterations such as sticking pieces of tape on a stop sign, an attacker could at best cause some slight annoyances and at worst a horrible traffic accident.
+          </p>
+
+          <h3>Project Proposal</h3>
+          <p>
+            In response to this article, our team decided that we wanted to see how simple it would be to create a convolutional neural network to classifiy stop signs, but more specifically, to see how robust we could make it to alerations such as graffiti or even just wear and tear from being out in the elements. Our project wasn't meant as a defense to the attack proposed in the above article, but rather our own proof of concept to see if CNNs could be used for tamper detection.
+          </p>
+          <p>
+            To carry the idea further past the scope of our project, we surmised that if tampering was detected, the suspect stop sign could be sent further along down the chain to a more robust classification algorithm (but perhaps requiring more compute) that could take into account other environment factors and cues to determine the true nature of the sign. For example, it could consider if there is a stopbar present in the scene, or if the sign shape was octogonal.
+          </p>
+          <p>To find a detailed explanation of our project methodology, please visit the <a href="methodology.html">Methodology</a> tab.</p>
         </div>
       </div>
     </div><!-- /.container -->
