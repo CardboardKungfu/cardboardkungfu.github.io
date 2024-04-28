@@ -1,0 +1,2 @@
+## Stop Sign Masker
+The data set we chose contained a list of bounding boxes as well as line segements. For the first iteration of testing, we only used stop signs on a black background. To achieve this, masker.py was used to mask the stop signs based on their bounding boxes. After validating our code, we moved to a more robust approach of using stop signs with background. However, we still wanted the focus to be on the stop signs, so crop-images.py was used to crop the larger images down to the size of the bounding box containing the stop sign.
