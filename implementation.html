@@ -43,20 +43,45 @@
     </nav>
 
     <div class="container">
+
       <div class="row">
-        <div class="col-12">
+        <div class="col-lg-12">
           <h1 class="page-header">Implementation</h1>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-lg-12">
+          <img src="assets/pipeline.jpg" class="img-fluid" alt="Project Pipeline">
         </div>
       </div>
 
       <div class="row">
-        <div class="col-4">
-        </div>
-        <div class="col-4">
-        </div>
-        <div class="col-4">
+        <div class="col-lg-12">
+          <h2>How to setup and run our project</h2>
+
+          <h3>1. Gather the Dataset</h3>
+          <p>
+            The first step is to download the <strong>codebase</strong> folder as a zip found <a href="https://github.com/CardboardKungfu/cardboardkungfu.github.io/tree/main/codebase">here</a>. You're free to clone this entire git repo, but if you just want a single directory, you can use <a href="https://download-directory.github.io/">this</a> website to download a specific folder. Just paste in the link.
+            <br>
+            <br>
+            Once you've downloaded the codebase folder, you have a few options. There is a mathematica notebook that can generate the graffitied images when run in the same directory as the unzipped <strong>base</strong> folder. However, I highly recommend against installing and running Mathematica (unless you really want a challenge). Instead, there is a zip file called <strong>images.zip</strong> that contains two folders, <strong>negatives</strong> and <strong>positives</strong> which have 400 examples each. The negatives do not contain any graffiti while the positive samples do. This <strong>images</strong> folder is all you need to train and run our model.
+          </p>
+
+          <h3>2. Run the Model</h3>
+          <p>
+            Once you've either unzipped the <strong>images</strong> folder or generated it through Mathematica, you're ready to run our model. Simply open up <strong>cnn-classifier.ipynb</strong> and run it. This will train the model based on the dataset and then display the results within the Jupyter notebook, like so:
+          </p>
+
         </div>
       </div>
+
+      <div class="row">
+        <div class="col-lg-12">
+          <img src="assets/demo.jpg" alt="Demo output of our model">
+        </div>
+      </div>
+
     </div><!-- /.container -->
 
     <div class="container footer">
