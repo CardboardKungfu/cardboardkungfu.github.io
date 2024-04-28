@@ -1,71 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
 
-    <title>Results</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+  <title>Results</title>
 
-    <!-- Custom CSS for the '3 Col Portfolio' Template -->
-    <link href="css/3-col-portfolio.css" rel="stylesheet">
-  </head>
+  <!-- Bootstrap core CSS -->
+  <link href="css/bootstrap.css" rel="stylesheet">
 
-  <body>
-    <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="index.html">Stop Sign Tampering Detection</a>
-        </div>
+  <!-- Custom CSS for the '3 Col Portfolio' Template -->
+  <link href="css/3-col-portfolio.css" rel="stylesheet">
+</head>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse navbar-ex1-collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="motivation.html">Motivation</a></li>
-            <li><a href="methodology.html">Methodology</a></li>
-            <li><a href="implementation.html">Implementation</a></li>
-            <li><a href="results.html">Results</a></li>
-            <li><a href="challenges.html">Challenges & Future</a></li>
-            <li><a href="slides.pdf">Project Slides</a></li>
-          </ul>
-        </div><!-- /.navbar-collapse -->
-      </div><!-- /.container -->
-    </nav>
-
+<body>
+  <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
     <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <h1 class="page-header">Results</h1>
-        </div>
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">Stop Sign Tampering Detection</a>
       </div>
 
-      <div class="row">
-        <div class="col-4">
-        </div>
-        <div class="col-4">
-        </div>
-        <div class="col-4">
-        </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="motivation.html">Motivation</a></li>
+          <li><a href="methodology.html">Methodology</a></li>
+          <li><a href="implementation.html">Implementation</a></li>
+          <li><a href="results.html">Results</a></li>
+          <li><a href="challenges.html">Challenges & Future</a></li>
+          <li><a href="slides.pdf">Project Slides</a></li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container -->
+  </nav>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1 class="page-header">Results</h1>
       </div>
-    </div><!-- /.container -->
+    </div>
 
-    <div class="container footer">
-      <hr>
-      <a href="https://github.com/CardboardKungfu/cardboardkungfu.github.io">Github Repository</a>
-    </div><!-- /.container -->
+    <div class="row">
+      <div class="col-lg-12">
+        <h3>Small model training</h3>
+        <p>
+          Using the implementation detailed in the previous notebook, we trained a "small model" on a small subset of
+          the training
+          data. This amounted to 1,500 randomly sampled images from each class, 3,000 training images total.
+        </p>
+        <div style="display: flex; justify-content: center; align-items: center;">
+          <img src="assets/train_model.jpg" style="max-height: 400px;" alt="Assess model performance">
+          <br>
+        </div>
 
-    <!-- JavaScript -->
-    <script src="js/jquery-1.10.2.js"></script>
-    <script src="js/bootstrap.js"></script>
-  </body>
+        <h3>Small model performance</h3>
+        <p> We tested this small model on a very large test dataset of 30,000 test images (15,000 from each class). We
+          found that this "small model" generalizes exceptionally well to unseen images, and classifies whether a stop
+          sign has been vandalized or not with very high accuracy. </p>
+        <p>
+          The CNN model demonstrates a high overall accuracy of 98.5% with an impressive true positive rate of over 99%.
+          It is highly effective at correctly identifying non-graffitied stop signs and rarely misclassifies them as
+          graffitied. These results highlight the small model's ability to generalize effectively to unseen images.
+        </p>
+
+        <div style="display: flex; justify-content: center; align-items: center;">
+          <img src="assets/confusion-matrix.jpg" style="max-height: 400px;" alt="Confusion matrix">
+        </div>
+        <br>
+        <div style="display: flex; justify-content: center; align-items: center;">
+          <img src="assets/results-normalwidth.jpg" style="max-height: 400px;" alt="Model results">
+        </div>
+        <br>
+
+        <h3>Real world example model performance</h3>
+        <p>
+          We also tested our model on the motivating example discussed in the Motivation section. The model correctly
+          classifies the sign as vandalized with 95% confidence.
+            
+        <div style="display: flex; justify-content: center; align-items: center;">
+          <img src="assets/motivating-example.jpg" style="min-height: 275px;" alt="Model results">
+        </div>
+
+
+
+
+
+
+
+        <div class="row">
+          <div class="col-4">
+          </div>
+          <div class="col-4">
+          </div>
+          <div class="col-4">
+          </div>
+        </div>
+      </div><!-- /.container -->
+
+      <div class="container footer">
+        <hr>
+        <a href="https://github.com/CardboardKungfu/cardboardkungfu.github.io">Github Repository</a>
+      </div><!-- /.container -->
+
+      <!-- JavaScript -->
+      <script src="js/jquery-1.10.2.js"></script>
+      <script src="js/bootstrap.js"></script>
+</body>
+
 </html>
