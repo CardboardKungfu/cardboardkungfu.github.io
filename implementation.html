@@ -1,160 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="">
-  <meta name="author" content="">
+    <title>Implementation</title>
 
-  <title>implementation</title>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
 
-  <!-- Bootstrap core CSS -->
-  <link href="css/bootstrap.css" rel="stylesheet">
+    <!-- Custom CSS for the '3 Col Portfolio' Template -->
+    <link href="css/3-col-portfolio.css" rel="stylesheet">
+  </head>
 
-  <!-- Custom CSS for the '3 Col Portfolio' Template -->
-  <link href="css/3-col-portfolio.css" rel="stylesheet">
-</head>
+  <body>
+    <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">Stop Sign Tampering Detection</a>
+        </div>
 
-<body>
-  <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="motivation.html">Motivation</a></li>
+            <li><a href="methodology.html">Methodology</a></li>
+            <li><a href="implementation.html">Implementation</a></li>
+            <li><a href="results.html">Results</a></li>
+            <li><a href="challenges.html">Challenges & Future</a></li>
+            <li><a href="slides.pdf">Project Slides</a></li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container -->
+    </nav>
+
     <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="index.html">Stop Sign Tampering Detection</a>
+      <div class="row">
+        <div class="col-12">
+          <h1 class="page-header">Implementation</h1>
+        </div>
       </div>
 
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse navbar-ex1-collapse">
-        <ul class="nav navbar-nav">
-          <li><a href="motivation.html">Motivation</a></li>
-          <li><a href="methodology.html">Methodology</a></li>
-          <li><a href="implementation.html">Implementation</a></li>
-          <li><a href="results.html">Results</a></li>
-          <li><a href="challenges.html">Challenges & Future</a></li>
-          <li><a href="slides.pdf">Project Slides</a></li>
-        </ul>
-      </div><!-- /.navbar-collapse -->
+      <div class="row">
+        <div class="col-4">
+        </div>
+        <div class="col-4">
+        </div>
+        <div class="col-4">
+        </div>
+      </div>
     </div><!-- /.container -->
-  </nav>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <h1 class="page-header">Implementation</h1>
-      </div>
-    </div>
+    <div class="container footer">
+      <hr>
+      <a href="https://github.com/CardboardKungfu/cardboardkungfu.github.io">Github Repository</a>
+    </div><!-- /.container -->
 
-    <div class="row">
-      <div class="col-lg-12">
-        <h3>Creating the Synthetic Training Data</h3>
-        <p>
-          We used Wolfram Mathematica to synthesize the training data to be used in the convolutional neural network.
-          Some of the key Mathematica functions that we wrote to accomplish this goal included:
-          <li>
-            <b>preprocess</b>: A function that performs a few preprocessing tasks on an input image to create a good
-            mask. In this case, we included a binarize operation and an opening operation with a radius 3 disk matrix as
-            the morphological element.
-          </li>
-          <li>
-            <b>scaleToFit</b>: A function that rescales a source image so that it is guaranteed
-            to fit within a ROI mask of a destination image.
-          </li>
-          <li>
-            <b>getViablePlacements</b>: This helper function finds all viable (x,
-            y) pairs such that when a source image is placed at point (x,
-            y) on the destination image, all four of the source image corners
-            are touching a foreground part of the mask. It is crucial to ensuring that the graffiti is placed entirely
-            on the stop sign and not on the background.
-          </li>
-          <li>
-            <b>placeImages</b>: This function creates valid compositions of the source image on the
-            destination image.
-            The criterion for validity is that all four corners of the source.
-            image touch the foreground of the destination image. These valid placements are computed in
-            getViablePlacements.
-          </li>
-          <li>
-            <b>perturb</b>: This function takes in a single image and outputs several procedural perturbations of it.
-            Blur, noise, contrast, brightness adjustments.
-          </li>
-        </p>
-        <p>
-          The end result of the training data generation process calls a composition on all of these functions on stop
-          sign and graffiti images to create many images similar to the examples below:
-        </p>
-        <img src="assets/synthetic-data.jpg" style="display: block; margin-left: auto; margin-right: auto;"
-          alt="Example Synthetic Training Data">
-
-
-
-        <h3>Convolutional Neural Network Implementation</h3>
-        <p>
-          From here, we decided to use a Convolutional Neural Network to perform the binary classification. The model
-          definition, training and testing are implemented in cnn-classifier.ipynb in the codebase section of the
-          repository.
-          The actual implementation of the neural network is fairly simple, comprising only a few helper functions and
-          lines of Python code. (First image)
-        </p>
-        <div style="display: flex; justify-content: center; align-items: center;">
-          <img src="assets/model-definition.jpg" style="max-height: 400; margin-right: 10px;"
-            alt="Example Synthetic Training Data">
-          <img src="assets/random-sample-files.jpg" style="max-height: 400px;" alt="Randomly sample files">
-        </div>
-        <br> 
-        <div style="display: flex; justify-content: center; align-items: center;">
-          <img src="assets/train_model.jpg" style="max-height: 400px;" alt="Assess model performance">
-          <br>
-        </div>
-        <br>
-        <div style="display: flex; justify-content: center; align-items: center;">
-          <img src="assets/assess_model_performance.jpg" style="max-height: 400px;" alt="Assess model performance">
-          <br>
-        </div>
-        <br>
-        <p>The subsequent images contain Python code for, in order:</p>
-        <li>
-          <b>random_sample_files</b>: This helper function was written to allow us to randomly select a sample of files
-          from a directory. This allowed us to train a "small model" on a subset of the full synthetic training data
-          (this was done for compute resource efficiency).
-        </li>
-        <li>
-          <b>Extract randomly sampled training data and train the model</b>: This code block calls random_sample_files to extract random files from the large "images" folders, concatenates the images to form X, and creates labels variable y based upon 1- and 0- labels (binary classification).
-        </li>
-        <li>
-          <b>Assess model performance</b>: This code creates a confusion matrix and calculates true positive rate, true negative rate, false positive rate, and false negative rate to assess the model's performance on testing images. It prints out these values and plots the confusion matrix using Seaborn.
-        </li>
-
-        <br>
-        <p>Next, we will discuss the results attained from this "small model" in the <a href="results.html">Results</a>
-          tab.</p>
-      </div>
-    </div>
-  </div><!-- /.container -->
-
-  <div class="row">
-    <div class="col-4">
-    </div>
-    <div class="col-4">
-    </div>
-    <div class="col-4">
-    </div>
-  </div>
-  </div><!-- /.container -->
-
-  <div class="container footer">
-    <hr>
-    <a href="https://github.com/CardboardKungfu/cardboardkungfu.github.io">Github Repository</a>
-  </div><!-- /.container -->
-
-  <!-- JavaScript -->
-  <script src="js/jquery-1.10.2.js"></script>
-  <script src="js/bootstrap.js"></script>
-</body>
-
+    <!-- JavaScript -->
+    <script src="js/jquery-1.10.2.js"></script>
+    <script src="js/bootstrap.js"></script>
+  </body>
 </html>
