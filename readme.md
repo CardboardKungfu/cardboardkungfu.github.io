@@ -2,7 +2,7 @@
 
 This repository includes both the website files along with the code used to generate our project. The code for this project can be found in the codebase/ folder.
 
-References:
+### References
 [1] Hacking street signs with stickers could confuse self-driving cars - Jonathan M. Gitlin
 https://arstechnica.com/cars/2017/09/hacking-street-signs-with-stickerscould-confuse-self-driving-cars/
 
